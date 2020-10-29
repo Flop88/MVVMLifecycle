@@ -2,12 +2,18 @@ package ru.mvlikhachev.mvvmlifecycle
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
-    private val getData = GetData()
+    val myLiveData = MyLiveData()
 
     private var liveDataString = MutableLiveData<String>()
 
@@ -15,12 +21,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        liveDataString.value = "Hello live data"
+        val testText : TextView = findViewById(R.id.testTextView)
+        val saveButton : Button = findViewById(R.id.saveButton)
+        val dataEditText : EditText = findViewById(R.id.dataEditText)
 
-        var testTextView : TextView = findViewById(R.id.testTextView)
+        myLiveData.observe(this, Observer {
+            testText.text = it
+        })
 
 
 
+        saveButton.setOnClickListener {
+            myLiveData.setValueToLiveData(dataEditText.text.toString())
+        }
     }
 
 
