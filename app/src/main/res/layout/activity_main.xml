@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/stringTextView"
+        android:id="@+id/text1TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ldString"
@@ -19,7 +19,7 @@
         />
 
     <TextView
-        android:id="@+id/intTextView"
+        android:id="@+id/text2TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -28,7 +28,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stringTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/text1TextView" />
 
     <EditText
         android:id="@+id/dataEditText"
@@ -36,15 +36,25 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/intTextView"/>
+        app:layout_constraintTop_toBottomOf="@id/text2TextView"/>
 
     <Button
-        android:id="@+id/saveButton"
+        android:id="@+id/saveButton1"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Save"
+        android:text="Save Livedata1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/dataEditText" />
+
+    <Button
+        android:id="@+id/saveButton2"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Save Livedata2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/saveButton1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
