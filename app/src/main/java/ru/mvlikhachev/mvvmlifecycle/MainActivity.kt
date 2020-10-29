@@ -14,6 +14,8 @@ import kotlinx.coroutines.launch
 class MainActivity : AppCompatActivity() {
 
     val myLiveData = MyLiveData()
+    lateinit var observer : Observer<String>
+
 
     private var liveDataString = MutableLiveData<String>()
 
@@ -25,10 +27,9 @@ class MainActivity : AppCompatActivity() {
         val saveButton : Button = findViewById(R.id.saveButton)
         val dataEditText : EditText = findViewById(R.id.dataEditText)
 
-        myLiveData.observe(this, Observer {
+        observer = Observer {
             testText.text = it
-        })
-
+        }
 
 
         saveButton.setOnClickListener {
@@ -36,6 +37,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        myLiveData.observe(this, observer)
+    }
 
+    override fun onStop() {
+        super.onStop()
+        myLiveData.removeObserver(observer)
+    }
 
 }
